@@ -16,8 +16,8 @@ from bot.helpers.utils import CustomFilters
 OAUTH_SCOPE = "https://www.googleapis.com/auth/drive"
 REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
 G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
-G_DRIVE_CLIENT_ID = "60177565069-uekslar5hkro0nfnms2jno4fhgencbjr.apps.googleusercontent.com"
-G_DRIVE_CLIENT_SECRET = "J4O_iM-NnPLhD6HLiZvd71CE"
+G_DRIVE_CLIENT_ID = "202264815644.apps.googleusercontent.com"
+G_DRIVE_CLIENT_SECRET = "X4Z3ca8xfWDb1Voo-F9a7ZxJ"
 flow = None
 
 @Client.on_message(filters.private & filters.incoming & filters.command(BotCommands.Authorize))
@@ -62,10 +62,6 @@ def _revoke(client, message):
 
 @Client.on_message(filters.private & filters.incoming & filters.text & ~CustomFilters.auth_users)
 async def _token(client, message):
-  token = message.text.split()[-1]
-  WORD = len(token)
-  if WORD == 57 and token[1] == "/":
-    creds = None
     global flow
     if flow:
       try:
